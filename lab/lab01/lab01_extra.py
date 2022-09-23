@@ -15,6 +15,15 @@ def falling(n, k):
     4
     """
     "*** YOUR CODE HERE ***"
+    p = 1 * n
+    if k > 0:
+        for i in range(1,k):
+            n = n -1
+            p = p * n
+        return p
+    else:
+        return 1
+    
 
 def double_eights(n):
     """Return true if n has two eights in a row.
@@ -32,6 +41,17 @@ def double_eights(n):
     False
     """
     "*** YOUR CODE HERE ***"
+    n = str(n)
+    l = len(n)
+    t = ''
+    
+    for i in range(0,l):
+        p = t
+        t = n[i]
+        if p == '8' and t == '8':
+            return True
+        
+    return False
 
 # Guessing Game
 
@@ -50,12 +70,17 @@ def guess_random():
         num_guesses = num_guesses + 1
     return num_guesses
 
-def guess_linear():
+def guess_linear():b
     """Guess in increasing order and return the number of guesses."""
     prompt_for_number(LOWER, UPPER)
-    num_guesses = 1
+    num_guesses = 0
     guess = LOWER
     "*** YOUR CODE HERE ***"
+    correct = False
+    while not correct:
+        correct = is_correct(guess)
+        guess = guess + 1
+        num_guesses = num_guesses + 1
     return num_guesses
 
 def guess_binary():
@@ -67,10 +92,20 @@ def guess_binary():
     algorithm doesn't need to try numbers that are greater than guess.
     """
     prompt_for_number(LOWER, UPPER)
-    num_guesses = 1
+    num_guesses = 0
     lower, upper = LOWER, UPPER
     guess = (lower + upper) // 2
     "*** YOUR CODE HERE ***"
+    correct = False
+    while not correct:
+        correct = is_correct(guess)
+        if correct == False:
+            is_high = is_too_high(guess)
+        if is_high == True:
+            guess = guess - 1
+        else:
+            guess = guess + 1
+        num_guesses = num_guesses + 1
     return num_guesses
 
 # Receive user input. You do not need to understand the code below this line.
