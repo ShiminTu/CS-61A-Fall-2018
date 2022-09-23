@@ -93,20 +93,20 @@ def with_if_function():
     >>> print(result)
     None
     """
-    return if_function(c(), t(), f())
+    return if_function(c(), t(), f()) 
 
 def c():
     "*** YOUR CODE HERE ***"
-    return 1
+    return False
 
 def t():
     "*** YOUR CODE HERE ***"
-    return 2
+    print(1)
     
 
 def f():
     "*** YOUR CODE HERE ***"
-    return 1
+    print(2)
     
 
 # Q5
@@ -126,17 +126,17 @@ def hailstone(n):
     7
     """
     "*** YOUR CODE HERE ***"
+    n = int(n)
+    print(n)
     m = 1
     
     while n != 1:
-        print(int(n))
         if n%2 == 0:
             n = n / 2
         else:
             n = 3*n + 1
         m = m + 1
-
-    print(int(n))
+        print(int(n))
 
     return m
 
