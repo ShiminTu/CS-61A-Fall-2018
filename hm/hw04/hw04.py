@@ -116,6 +116,17 @@ def count_change(amount):
     True
     """
     "*** YOUR CODE HERE ***"
+    def func(amount,n):
+        if amount == 0:
+            return 1
+        elif n > amount:
+            return 0
+        else:
+            with_min = func(amount-n, n)
+            without_min = func(amount, n*2)
+            return with_min + without_min
+    
+    return func(amount,1)
 
 def print_move(origin, destination):
     """Print instructions to move a disk."""
@@ -150,6 +161,12 @@ def move_stack(n, start, end):
     """
     assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
+    if n == 1:
+        print_move(start,end)
+    else:
+        move_stack(n-1, start, 6-start-end)
+        move_stack(1, start, end)
+        move_stack(n-1, 6-start-end,end)
 
 ###################
 # Extra Questions #
