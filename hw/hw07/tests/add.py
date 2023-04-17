@@ -1,13 +1,13 @@
 test = {
-  'name': 'remove',
+  'name': 'add',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          scm> (remove 3 nil)
-          f9ebafa0bfa75e2a858c464aa39a573d
+          scm> (add odds 2)
+          c1f43b222f5f6e308e17941a6b97898f
           # locked
           """,
           'hidden': False,
@@ -15,8 +15,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 2 '(1 3 2))
-          4274c7da2de8112f582f10ef20b2d371
+          scm> (add odds 5)
+          244a1e3f51a6f4afe83944c26fbf7311
           # locked
           """,
           'hidden': False,
@@ -24,8 +24,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 1 '(1 3 2))
-          a69c1998a934bceac4c7b234f084e250
+          scm> (add odds 6)
+          1b7995e61fcb2eaebbda782ef7cec54d
           # locked
           """,
           'hidden': False,
@@ -33,17 +33,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 42 '(1 3 2))
-          09c9e5e54b16e44b6676cd663e135ab4
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          scm> (remove 3 '(1 3 3 7))
-          14857fc721cca1cd17cf1d9e3404fd2a
+          scm> (add odds 10)
+          69d3c71b4d4f9b941dd1a197ddf3660c
           # locked
           """,
           'hidden': False,
@@ -52,8 +43,8 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      scm> (load 'lab09)
-      scm> (load 'lab09_extra)
+      scm> (load 'hw07)
+      scm> (define odds (list 3 5 7 9))
       """,
       'teardown': '',
       'type': 'scheme'

@@ -1,13 +1,16 @@
 test = {
-  'name': 'sub-all',
+  'name': 'derive-exp',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          scm> (sub-all '(go ((bears))) '(go bears) '(big game))
-          afe3b6edd6a72ec8a29b656de2661831
+          scm> (derive x^2 'x) ; Remember products have the form (* a b)
+          5677b347b03655ed5ba4d637128b074c
+          # locked
+          scm> (derive x^3 'x)
+          0d0ddbcb02925ae809a618030fe91cb0
           # locked
           """,
           'hidden': False,
@@ -15,10 +18,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (sub-all '((4 calling birds) (3 french hens) (2 turtle doves))
-          ....     '(1 2 3 4)
-          ....     '(one two three four))
-          ((four calling birds) (three french hens) (two turtle doves))
+          scm> (derive (make-sum x^3 x^2) 'x)
+          (+ (* 3 (^ x 2)) (* 2 x))
           """,
           'hidden': False,
           'locked': False
@@ -26,8 +27,9 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      scm> (load 'lab09)
-      scm> (load 'lab09_extra)
+      scm> (load 'hw08)
+      scm> (define x^2 (make-exp 'x 2))
+      scm> (define x^3 (make-exp 'x 3))
       """,
       'teardown': '',
       'type': 'scheme'

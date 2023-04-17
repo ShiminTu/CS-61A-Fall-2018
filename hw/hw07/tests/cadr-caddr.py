@@ -1,13 +1,13 @@
 test = {
-  'name': 'over-or-under',
+  'name': 'cadr-caddr',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          scm> (over-or-under 5 5)
-          3e92404229d40b73cf8dd05dcfa23ea9
+          scm> (cddr '(1 2 3 4))
+          0ed1a53f06011effab45b3ff5d11631b
           # locked
           """,
           'hidden': False,
@@ -15,8 +15,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (over-or-under 5 4)
-          d912fc844d1dbaeea8a84b3ec8b315bc
+          scm> (cadr '(1 2 3 4))
+          9e912e512c4a5bd85d3693205c7f635c
           # locked
           """,
           'hidden': False,
@@ -24,8 +24,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (over-or-under 3 5)
-          2a6276d00f3261a89d6feb11e219e42e
+          scm> (caddr '(1 2 3 4))
+          b13af181ea4aa633930e92779ea49cee
           # locked
           """,
           'hidden': False,
@@ -34,8 +34,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      scm> (load 'lab09)
-      scm> (load 'lab09_extra)
+      scm> (load 'hw07)
       """,
       'teardown': '',
       'type': 'scheme'

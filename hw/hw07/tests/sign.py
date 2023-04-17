@@ -1,13 +1,19 @@
 test = {
-  'name': 'remove',
+  'name': 'sign',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          scm> (remove 3 nil)
-          f9ebafa0bfa75e2a858c464aa39a573d
+          scm> (cond ((= 1 1) 42))
+          609e0c8d7071cf8835876005653318ce
+          # locked
+          scm> (cond ((= 1 1) 42) ((= 1 1) 24))
+          609e0c8d7071cf8835876005653318ce
+          # locked
+          scm> (cond ((= 1 0) 42) ((= 0 1) 24) (else 999))
+          256b8b5c10cc3aeadfb6c3c9871caa8c
           # locked
           """,
           'hidden': False,
@@ -15,8 +21,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 2 '(1 3 2))
-          4274c7da2de8112f582f10ef20b2d371
+          scm> (sign -42)
+          e1b9cfca7d7c90645adadc2693015138
           # locked
           """,
           'hidden': False,
@@ -24,8 +30,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 1 '(1 3 2))
-          a69c1998a934bceac4c7b234f084e250
+          scm> (sign 0)
+          2987fbac6d35b0de527489a12a63cba6
           # locked
           """,
           'hidden': False,
@@ -33,17 +39,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 42 '(1 3 2))
-          09c9e5e54b16e44b6676cd663e135ab4
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          scm> (remove 3 '(1 3 3 7))
-          14857fc721cca1cd17cf1d9e3404fd2a
+          scm> (sign 42)
+          c246989ba42191bcf781a5b9bc9b80ea
           # locked
           """,
           'hidden': False,
@@ -52,8 +49,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      scm> (load 'lab09)
-      scm> (load 'lab09_extra)
+      scm> (load 'hw07)
       """,
       'teardown': '',
       'type': 'scheme'

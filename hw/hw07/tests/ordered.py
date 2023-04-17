@@ -1,13 +1,13 @@
 test = {
-  'name': 'remove',
+  'name': 'ordered?',
   'points': 1,
   'suites': [
     {
       'cases': [
         {
           'code': r"""
-          scm> (remove 3 nil)
-          f9ebafa0bfa75e2a858c464aa39a573d
+          scm> (ordered? '(1 2 3 4 5))  ; True or False
+          60c2a5359961375936a02892ac434f71
           # locked
           """,
           'hidden': False,
@@ -15,8 +15,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 2 '(1 3 2))
-          4274c7da2de8112f582f10ef20b2d371
+          scm> (ordered? '(1 5 2 4 3))  ; True or False
+          30fee613b5f24feb0ea2d5089730e609
           # locked
           """,
           'hidden': False,
@@ -24,8 +24,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 1 '(1 3 2))
-          a69c1998a934bceac4c7b234f084e250
+          scm> (ordered? '(2 2))  ; True or False
+          60c2a5359961375936a02892ac434f71
           # locked
           """,
           'hidden': False,
@@ -33,17 +33,8 @@ test = {
         },
         {
           'code': r"""
-          scm> (remove 42 '(1 3 2))
-          09c9e5e54b16e44b6676cd663e135ab4
-          # locked
-          """,
-          'hidden': False,
-          'locked': True
-        },
-        {
-          'code': r"""
-          scm> (remove 3 '(1 3 3 7))
-          14857fc721cca1cd17cf1d9e3404fd2a
+          scm> (ordered? '(1 2 2 4 3))  ; True or False
+          30fee613b5f24feb0ea2d5089730e609
           # locked
           """,
           'hidden': False,
@@ -52,8 +43,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      scm> (load 'lab09)
-      scm> (load 'lab09_extra)
+      scm> (load 'hw07)
       """,
       'teardown': '',
       'type': 'scheme'
